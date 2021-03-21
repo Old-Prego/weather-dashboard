@@ -5,7 +5,6 @@ var curIcon = document.getElementById("dayIcon");
 var curTemp = document.getElementById("temp");
 var curHum = document.getElementById("humidity");
 var curWind = document.getElementById("wind");
-var curUV = document.getElementById("uv");
 var c1Date = document.getElementById("card1Hdr");
 var c1Icon = document.getElementById("card1Icon");
 var c1Temp = document.getElementById("card1Temp");
@@ -55,10 +54,35 @@ function KtoF(temp){
 }
 
 function popResults(data){
-    curIcon.textContent = ", " + data.list[0].weather[0].main;
+    curIcon.textContent = data.list[0].weather[0].main;
     curTemp.textContent = (Math.round(KtoF(data.list[0].main.temp) * 10) / 10) + "\u00B0F";
     curHum.textContent = data.list[0].main.humidity + "%";
-    curWind.textContent = data.list[0].wind.speed;
+    curWind.textContent = data.list[0].wind.speed + " MPH";
+
+    c1Date.textContent = moment(data.list[1].dt_txt).format("MMM DD, YYYY");
+    c1Icon.textContent = data.list[1].weather[0].main;
+    c1Temp.textContent = (Math.round(KtoF(data.list[1].main.temp) * 10) / 10) + "\u00B0F";
+    c1Hum.textContent = data.list[1].main.humidity + "%";
+
+    c2Date.textContent = moment(data.list[2].dt_txt).format("MMM DD, YYYY");
+    c2Icon.textContent = data.list[2].weather[0].main;
+    c2Temp.textContent = (Math.round(KtoF(data.list[2].main.temp) * 10) / 10) + "\u00B0F";
+    c2Hum.textContent = data.list[2].main.humidity + "%";
+
+    c3Date.textContent = moment(data.list[3].dt_txt).format("MMM DD, YYYY");
+    c3Icon.textContent = data.list[3].weather[0].main;
+    c3Temp.textContent = (Math.round(KtoF(data.list[3].main.temp) * 10) / 10) + "\u00B0F";
+    c3Hum.textContent = data.list[3].main.humidity + "%";
+
+    c4Date.textContent = moment(data.list[4].dt_txt).format("MMM DD, YYYY");
+    c4Icon.textContent = data.list[4].weather[0].main;
+    c4Temp.textContent = (Math.round(KtoF(data.list[4].main.temp) * 10) / 10) + "\u00B0F";
+    c4Hum.textContent = data.list[4].main.humidity + "%";
+
+    c5Date.textContent = moment(data.list[5].dt_txt).format("MMM DD, YYYY");
+    c5Icon.textContent = data.list[5].weather[0].main;
+    c5Temp.textContent = (Math.round(KtoF(data.list[5].main.temp) * 10) / 10) + "\u00B0F";
+    c5Hum.textContent = data.list[5].main.humidity + "%";
 }
 
 
@@ -85,8 +109,11 @@ function forecastWeather(event){
             console.log(data);
             popResults(data);
         })
-
-    
 }
 
+savedSearches = JSON.parse(localStorage.getItem("searches"));
+if(savedSearches !== null){
+    searches = savedSearches;
+    buildList(searches);
+}
 
