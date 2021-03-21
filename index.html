@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="Assets/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" defer></script>
+    <script src="Assets/script.js" defer></script>
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <div class="navbar bg-info d-flex justify-content-center">
+        <h1 class="text-center">Weather Dashboard</h1>
+    </div>
+    <div class="container row col-12 mx-2">
+        <aside id="sidebar" class="sm-3 md-3 lg-2">
+            <h4>Search for a City:</h4>
+            <form id="citySearch" class="col-12 row my-3" onsubmit="forecastWeather(event)"> 
+                <input type="text" id="cityInput" class="col-9">
+                <button class="btn btn-info btn-square col-3" type="submit" id="search"><span class="fas fa-search"></span></button>
+            </form>
+            <div id="previousSearch">
+                <ul id="searchList"></ul>        
+            </div>
+        </aside>
+
+        <main class="col sm-9 md-9 lg-10 ml-3">
+            <section id="detailCont" class="d-flex flex-column border col-12 my-3">
+                <h3><span id="city"></span> <span id="date"></span><span id="dayIcon"></span></h3>
+                <p>Temperature: <span id="temp"></span></p>
+                <p>Humidity: <span id="humidity"></span></p>
+                <p>Wind Speed: <span id="wind"></span></p>
+                <p>UV Index: <span id="uv"></span></p>
+            </section>
+            <section id="cardCont">
+                <h4>5-Day Forecast:</h4>
+                <div id="5day" class="row col-12">
+                    <div class="card lg-2 md-4 sm-6 mr-3 p-3 bg-info text-light">
+                        <h5 class="card-title" id="card1Hdr">8/13/2019</h5>
+                        <p class="card-text"><span id="card1Icon"></span></p>
+                        <p class="card-text">Temp: <span id="card1Temp"></span></p>
+                        <p class="card-text">Humidity: <span id="card1Humidity"></span></p>
+                    </div>
+                    <div class="card lg-2 md-4 sm-6 mx-3 p-3 bg-info text-light">
+                        <h5 class="card-title" id="card1Hdr">8/13/2019</h5>
+                        <p class="card-text"><span id="card1Icon"></span></p>
+                        <p class="card-text">Temp: <span id="card1Temp"></span></p>
+                        <p class="card-text">Humidity: <span id="card1Humidity"></span></p>
+                    </div>
+                    <div class="card lg-2 md-4 sm-6 mx-3 p-3 bg-info text-light">
+                        <h5 class="card-title" id="card1Hdr">8/13/2019</h5>
+                        <p class="card-text"><span id="card1Icon"></span></p>
+                        <p class="card-text">Temp: <span id="card1Temp"></span></p>
+                        <p class="card-text">Humidity: <span id="card1Humidity"></span></p>
+                    </div>
+                    <div class="card lg-2 md-4 sm-6 mx-3 p-3 bg-info text-light">
+                        <h5 class="card-title" id="card1Hdr">8/13/2019</h5>
+                        <p class="card-text"><span id="card1Icon"></span></p>
+                        <p class="card-text">Temp: <span id="card1Temp"></span></p>
+                        <p class="card-text">Humidity: <span id="card1Humidity"></span></p>
+                    </div>
+                    <div class="card lg-2 md-4 sm-6 mx-3 p-3 bg-info text-light">
+                        <h5 class="card-title" id="card1Hdr">8/13/2019</h5>
+                        <p class="card-text"><span id="card1Icon"></span></p>
+                        <p class="card-text">Temp: <span id="card1Temp"></span></p>
+                        <p class="card-text">Humidity: <span id="card1Humidity"></span></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    
+    
+</body>
+</html>
