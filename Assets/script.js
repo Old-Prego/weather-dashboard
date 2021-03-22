@@ -54,42 +54,43 @@ function KtoF(temp){
 }
 
 function popResults(data){
-    curIcon.textContent = data.list[0].weather[0].main;
-    curTemp.textContent = (Math.round(KtoF(data.list[0].main.temp) * 10) / 10) + "\u00B0F";
-    curHum.textContent = data.list[0].main.humidity + "%";
-    curWind.textContent = data.list[0].wind.speed + " MPH";
+    curIcon.textContent = data.list[0].weather.main;
+    curTemp.textContent = (Math.round(KtoF(data.list[0].temp.day) * 10) / 10) + "\u00B0F";
+    curHum.textContent = data.list[0].humidity + "%";
+    curWind.textContent = data.list[0].speed + " MPH";
 
-    c1Date.textContent = moment(data.list[3].dt_txt).format("MMM DD, YYYY");
-    c1Icon.textContent = data.list[3].weather[0].main;
-    c1Temp.textContent = (Math.round(KtoF(data.list[3].main.temp) * 10) / 10) + "\u00B0F";
-    c1Hum.textContent = data.list[3].main.humidity + "%";
+    c1Date.textContent = moment(data.list[1].dt).format("MMM DD, YYYY");
+    c1Icon.textContent = data.list[1].weather.main;
+    c1Temp.textContent = (Math.round(KtoF(data.list[1].temp.day) * 10) / 10) + "\u00B0F";
+    c1Hum.textContent = data.list[1].humidity + "%";
 
-    c2Date.textContent = moment(data.list[4].dt_txt).format("MMM DD, YYYY");
-    c2Icon.textContent = data.list[4].weather[0].main;
-    c2Temp.textContent = (Math.round(KtoF(data.list[4].main.temp) * 10) / 10) + "\u00B0F";
-    c2Hum.textContent = data.list[4].main.humidity + "%";
+    c2Date.textContent = moment(data.list[2].dt).format("MMM DD, YYYY");
+    c2Icon.textContent = data.list[2].weather.main;
+    c2Temp.textContent = (Math.round(KtoF(ddata.list[2].temp.day) * 10) / 10) + "\u00B0F";
+    c2Hum.textContent = data.list[2].humidity + "%";
 
-    c3Date.textContent = moment(data.list[5].dt_txt).format("MMM DD, YYYY");
-    c3Icon.textContent = data.list[5].weather[0].main;
-    c3Temp.textContent = (Math.round(KtoF(data.list[5].main.temp) * 10) / 10) + "\u00B0F";
-    c3Hum.textContent = data.list[5].main.humidity + "%";
+    c3Date.textContent = moment(data.list[3].dt).format("MMM DD, YYYY");
+    c3Icon.textContent = data.list[3].weather.main;
+    c3Temp.textContent = (Math.round(KtoF(data.list[3].temp.day) * 10) / 10) + "\u00B0F";
+    c3Hum.textContent = data.list[3].humidity + "%";
 
-    c4Date.textContent = moment(data.list[6].dt_txt).format("MMM DD, YYYY");
-    c4Icon.textContent = data.list[6].weather[0].main;
-    c4Temp.textContent = (Math.round(KtoF(data.list[6].main.temp) * 10) / 10) + "\u00B0F";
-    c4Hum.textContent = data.list[6].main.humidity + "%";
+    c4Date.textContent = moment(data.list[4].dt).format("MMM DD, YYYY");
+    c4Icon.textContent = data.list[4].weather.main;
+    c4Temp.textContent = (Math.round(KtoF(data.list[4].temp.day) * 10) / 10) + "\u00B0F";
+    c4Hum.textContent = data.list[4].humidity + "%";
 
-    c5Date.textContent = moment(data.list[7].dt_txt).format("MMM DD, YYYY");
-    c5Icon.textContent = data.list[7].weather[0].main;
-    c5Temp.textContent = (Math.round(KtoF(data.list[7].main.temp) * 10) / 10) + "\u00B0F";
-    c5Hum.textContent = data.list[7].main.humidity + "%";
+    c5Date.textContent = moment(data.list[5].dt).format("MMM DD, YYYY");
+    c5Icon.textContent = data.list[5].weather.main;
+    c5Temp.textContent = (Math.round(KtoF(data.list[5].temp.day) * 10) / 10) + "\u00B0F";
+    c5Hum.textContent = data.list[5].humidity + "%";
 }
 
 
 function forecastWeather(event){
     event.preventDefault();
     var cityName = document.getElementById("cityInput").value;
-    var searchCriteria = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=5f8d737b34dbcf8d42c5993772582542";
+    // var searchCriteria = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "&cnt=6&appid=24ef92959cfdb5f639da2349846061e3";
+    // var searchCriteria = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=5f8d737b34dbcf8d42c5993772582542";
 
     cityHeader.textContent = cityName;
 
