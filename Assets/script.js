@@ -59,30 +59,30 @@ function popResults(data){
     curHum.textContent = data.list[0].main.humidity + "%";
     curWind.textContent = data.list[0].wind.speed + " MPH";
 
-    c1Date.textContent = moment(data.list[1].dt_txt).format("MMM DD, YYYY");
-    c1Icon.textContent = data.list[1].weather[0].main;
-    c1Temp.textContent = (Math.round(KtoF(data.list[1].main.temp) * 10) / 10) + "\u00B0F";
-    c1Hum.textContent = data.list[1].main.humidity + "%";
+    c1Date.textContent = moment(data.list[3].dt_txt).format("MMM DD, YYYY");
+    c1Icon.textContent = data.list[3].weather[0].main;
+    c1Temp.textContent = (Math.round(KtoF(data.list[3].main.temp) * 10) / 10) + "\u00B0F";
+    c1Hum.textContent = data.list[3].main.humidity + "%";
 
-    c2Date.textContent = moment(data.list[2].dt_txt).format("MMM DD, YYYY");
-    c2Icon.textContent = data.list[2].weather[0].main;
-    c2Temp.textContent = (Math.round(KtoF(data.list[2].main.temp) * 10) / 10) + "\u00B0F";
-    c2Hum.textContent = data.list[2].main.humidity + "%";
+    c2Date.textContent = moment(data.list[4].dt_txt).format("MMM DD, YYYY");
+    c2Icon.textContent = data.list[4].weather[0].main;
+    c2Temp.textContent = (Math.round(KtoF(data.list[4].main.temp) * 10) / 10) + "\u00B0F";
+    c2Hum.textContent = data.list[4].main.humidity + "%";
 
-    c3Date.textContent = moment(data.list[3].dt_txt).format("MMM DD, YYYY");
-    c3Icon.textContent = data.list[3].weather[0].main;
-    c3Temp.textContent = (Math.round(KtoF(data.list[3].main.temp) * 10) / 10) + "\u00B0F";
-    c3Hum.textContent = data.list[3].main.humidity + "%";
+    c3Date.textContent = moment(data.list[5].dt_txt).format("MMM DD, YYYY");
+    c3Icon.textContent = data.list[5].weather[0].main;
+    c3Temp.textContent = (Math.round(KtoF(data.list[5].main.temp) * 10) / 10) + "\u00B0F";
+    c3Hum.textContent = data.list[5].main.humidity + "%";
 
-    c4Date.textContent = moment(data.list[4].dt_txt).format("MMM DD, YYYY");
-    c4Icon.textContent = data.list[4].weather[0].main;
-    c4Temp.textContent = (Math.round(KtoF(data.list[4].main.temp) * 10) / 10) + "\u00B0F";
-    c4Hum.textContent = data.list[4].main.humidity + "%";
+    c4Date.textContent = moment(data.list[6].dt_txt).format("MMM DD, YYYY");
+    c4Icon.textContent = data.list[6].weather[0].main;
+    c4Temp.textContent = (Math.round(KtoF(data.list[6].main.temp) * 10) / 10) + "\u00B0F";
+    c4Hum.textContent = data.list[6].main.humidity + "%";
 
-    c5Date.textContent = moment(data.list[5].dt_txt).format("MMM DD, YYYY");
-    c5Icon.textContent = data.list[5].weather[0].main;
-    c5Temp.textContent = (Math.round(KtoF(data.list[5].main.temp) * 10) / 10) + "\u00B0F";
-    c5Hum.textContent = data.list[5].main.humidity + "%";
+    c5Date.textContent = moment(data.list[7].dt_txt).format("MMM DD, YYYY");
+    c5Icon.textContent = data.list[7].weather[0].main;
+    c5Temp.textContent = (Math.round(KtoF(data.list[7].main.temp) * 10) / 10) + "\u00B0F";
+    c5Hum.textContent = data.list[7].main.humidity + "%";
 }
 
 
@@ -99,7 +99,7 @@ function forecastWeather(event){
     }
     searches.push(cityName);
     localStorage.setItem("searches",JSON.stringify(searches));
-    buildList(searches);
+    buildList(searches.reverse());
 
     fetch(searchCriteria)
         .then(function(response) {
@@ -114,6 +114,6 @@ function forecastWeather(event){
 savedSearches = JSON.parse(localStorage.getItem("searches"));
 if(savedSearches !== null){
     searches = savedSearches;
-    buildList(searches);
+    buildList(searches.reverse());
 }
 
