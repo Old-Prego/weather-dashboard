@@ -55,6 +55,7 @@ function buildList(cityList){
     prevCityList.appendChild(listItem);
 }
 
+// This function triggers when a previously searched city is clicked on, grabbing the city name and retriggering all the queries.
 function prevSearch(city){
     cityHeader.textContent = city;
     document.getElementById("cityInput").value = city;
@@ -102,6 +103,8 @@ function popResults(data){
     c5Icon.textContent = data.daily[5].weather[0].main;
     c5Temp.textContent = (Math.round(KtoF(data.daily[5].temp.day) * 10) / 10) + "\u00B0F";
     c5Hum.textContent = data.daily[5].humidity + "%";
+
+    document.getElementById("cityInput").value = "";
 }
 
 // This function takes the latitude and longitude provided by the geocoding API and fetches data from the openweather API

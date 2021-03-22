@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="Assets/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" defer></script>
     <script src="Assets/script.js" defer></script>
@@ -15,6 +14,8 @@
     <div class="navbar bg-info d-flex justify-content-center">
         <h1 class="text-center">Weather Dashboard</h1>
     </div>
+
+    <!-- Sidebar area for the searchbar and a variable list of previous searches -->
     <div class="container row col-12 mx-2">
         <aside id="sidebar" class="sm-3 md-3 lg-2">
             <h4>Search for a City:</h4>
@@ -28,7 +29,10 @@
             </div>
         </aside>
 
+        <!-- Right side of the screen with the main dashboard and cards -->
         <main class="col sm-9 md-9 lg-10 ml-3">
+
+            <!-- Container for all the dashboard items filled with today's weather information -->
             <section id="detailCont" class="d-flex flex-column border col-12 my-3">
                 <h3><span id="city"></span> <span id="date"></span></h3>
                 <h4 id="dayIcon"></h4>
@@ -37,6 +41,9 @@
                 <p>Wind Speed: <span id="wind"></span></p>
                 <p>UV Index: <span id="uvi"></span></p>
             </section>
+
+            <!-- Cards with the forecast for the next five days -->
+            <!-- Each card is filled from the Javascript -->
             <section id="cardCont">
                 <h4>5-Day Forecast:</h4>
                 <div id="5day" class="row col-12">
