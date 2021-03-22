@@ -143,7 +143,7 @@ function forecastWeather(event){
     localStorage.setItem("searches",JSON.stringify(searches));
     buildList(searches.reverse());
 
-    var geoSearch ="http://api.positionstack.com/v1/forward?access_key=4d0112f4606df65955616785ca11b046&query=" + cityName;
+    var geoSearch ="https://api.positionstack.com/v1/forward?access_key=4d0112f4606df65955616785ca11b046&query=" + cityName;
 
     fetch(geoSearch)
         .then(function(response) {
