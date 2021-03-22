@@ -118,6 +118,7 @@ function geoToWeather(lat,lon){
         })
         .then(function(data) {
             popResults(data);
+            console.log(data);
         })
 
 }
