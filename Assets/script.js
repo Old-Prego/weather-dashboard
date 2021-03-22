@@ -28,6 +28,8 @@ var c5Hum = document.getElementById("card5Humidity");
 var savedSearches;
 var searchToSave;
 var searches = [];
+var lat;
+var lon;
 
 const html = (strings, ...values) => new DOMParser().parseFromString(strings.map((string, i) => strings[i] + values[i]).join(''), "text/html").body.firstChild;
 
@@ -85,10 +87,25 @@ function popResults(data){
     c5Hum.textContent = data.list[5].humidity + "%";
 }
 
+function geoToWeather(lat,lon){
+
+    var searchCriteria = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly,alerts&appid=24ef92959cfdb5f639da2349846061e3"
+
+    fetch(searchCriteria)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            popResults(data);
+        })
+
+}
 
 function forecastWeather(event){
     event.preventDefault();
     var cityName = document.getElementById("cityInput").value;
+    
     // var searchCriteria = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "&cnt=6&appid=24ef92959cfdb5f639da2349846061e3";
     // var searchCriteria = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=5f8d737b34dbcf8d42c5993772582542";
 
@@ -102,14 +119,24 @@ function forecastWeather(event){
     localStorage.setItem("searches",JSON.stringify(searches));
     buildList(searches.reverse());
 
-    fetch(searchCriteria)
+    // var geoSearch = "https://api.opencagedata.com/geocode/v1/json?q=" + cityName + "&key=362dda9267174e018c42061534b8d146";
+    var geoSearch ="http://api.positionstack.com/v1/forward?access_key=4d0112f4606df65955616785ca11b046&query=" + cityName;
+
+    fetch(geoSearch)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data);
-            popResults(data);
+            console.log(data)
+            lat = data.data[0].latitude;
+            console.log(lat);
+            lon = data.data[0].longitude;
+            console.log(lon)
+
+            geoToWeather(lat,lon);
         })
+
+    
 }
 
 savedSearches = JSON.parse(localStorage.getItem("searches"));
