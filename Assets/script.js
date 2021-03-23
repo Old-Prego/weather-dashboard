@@ -118,7 +118,6 @@ function geoToWeather(lat,lon){
         })
         .then(function(data) {
             popResults(data);
-            console.log(data);
         })
 
 }
@@ -151,7 +150,6 @@ function forecastWeather(event){
             return response.json();
         })
         .then(function(data) {
-            console.log(data);
             lat = data[0].lat;
             lon = data[0].lon;
 
@@ -180,7 +178,6 @@ function init(){
                 return response.json();
             })
             .then(function(data) {
-                console.log(data);
                 lat = data[0].lat;
                 lon = data[0].lon;
 
