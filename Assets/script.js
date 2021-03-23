@@ -144,15 +144,16 @@ function forecastWeather(event){
     localStorage.setItem("searches",JSON.stringify(searches));
     buildList(searches.reverse());
 
-    var geoSearch ="http://api.positionstack.com/v1/forward?access_key=4d0112f4606df65955616785ca11b046&query=" + cityName;
+    var geoSearch ="https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=2&appid=24ef92959cfdb5f639da2349846061e3";
 
     fetch(geoSearch)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
-            lat = data.data[0].latitude;
-            lon = data.data[0].longitude;
+            console.log(data);
+            lat = data[0].lat;
+            lon = data[0].lon;
 
             geoToWeather(lat,lon);
         })
@@ -172,15 +173,16 @@ function init(){
         var cityName = document.getElementById("cityInput").value;
         cityHeader.textContent = cityName;
 
-        var geoSearch ="http://api.positionstack.com/v1/forward?access_key=4d0112f4606df65955616785ca11b046&query=" + cityName;
+        var geoSearch ="https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=2&appid=24ef92959cfdb5f639da2349846061e3";
 
         fetch(geoSearch)
             .then(function(response) {
                 return response.json();
             })
             .then(function(data) {
-                lat = data.data[0].latitude;
-                lon = data.data[0].longitude;
+                console.log(data);
+                lat = data[0].lat;
+                lon = data[0].lon;
 
                 geoToWeather(lat,lon);
             })
